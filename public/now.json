@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "alias": "danielors-swapi-app",
+  "name": "swapi-app",
+  "routes": [
+      {
+        "src": "^/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": ".*",
+        "dest": "/index.html"
+      }
+  ]
+}

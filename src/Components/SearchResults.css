@@ -1,0 +1,13 @@
+.SearchResults {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h2 {
+  font-family: 'Megrim', cursive;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.4)
+}
+
+li {
+  margin: 40px;
+}
