@@ -1,16 +1,23 @@
-.App {
-  text-align: center;
+body {
+  background-color: #282c34;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 10vmin;
-  pointer-events: none;
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
 }
 
 .App-header {
   font-family: 'Megrim', cursive;
-  background-color: #282c34;
   /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
@@ -22,24 +29,7 @@
 
 main {
   font-family: 'Open Sans', sans-serif;
-  background-color: #282c34;
-  min-height: 100vh;
+  /* background-color: #282c34; */
   color: #fff;
-}
-
-a {
-  color: #4CA7C7;
-}
-
-ul {
-  list-style: none;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  min-height: 100vh;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import './SearchBar.css';
 
 export default class SearchBar extends React.Component {
   state = {
@@ -13,6 +14,7 @@ export default class SearchBar extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log('search submitted!')
+    // this.props.setLoading()
 
     fetch(`https://swapi.co/api/people/?search=${this.state.term}`)
       .then(res => {
@@ -40,9 +42,11 @@ export default class SearchBar extends React.Component {
         <input 
           type="text" 
           placeholder="Search for a character..."
-          // value={}
-          onChange={(e) => this.handleSearch(e.target.value)} />
-          <input type="submit"/>
+          className="search-input"
+          onChange={(e) => this.handleSearch(e.target.value)} 
+          required
+          />
+        <button type="submit" className="submit-button">Submit</button>
       </form>
     )
   }

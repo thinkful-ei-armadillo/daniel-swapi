@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import SearchBar from './Components/SearchBar';
 import SearchResults from './Components/SearchResults';
 import ErrorBoundary from './ErrorBoundary';
+import Loading from './Components/Loading';
 import './App.css';
 
 class App extends Component {
   state = {
-    results: []
+    results: [],
+    loading: false
   }
 
   handleResults = (result) => {
     this.setState({results: result})
+  }
+
+  handleLoading() {
+    console.log('handleLoading triggered!')
+    console.log(this.loading)
+    this.setState({loading: !this.loading})
   }
 
   render() {
@@ -22,14 +29,20 @@ class App extends Component {
         </header>
         <main>
           <ErrorBoundary>
-          <SearchBar 
-            results={this.handleResults}
-            />
-          <SearchResults
-            results={this.state.results}
-            />
+            <SearchBar 
+              results={this.handleResults}
+              loading={this.state.loading}
+              setLoading={this.handleLoading}
+              />
+            <Loading
+              loading={this.state.loading}
+              />
+            <SearchResults
+              results={this.state.results}
+              loading={this.state.loading}
+              setLoading={this.handleLoading}
+              />
           </ErrorBoundary>
-          <img src={logo} className="App-logo" alt="logo" />
         </main>
       </div>
     );

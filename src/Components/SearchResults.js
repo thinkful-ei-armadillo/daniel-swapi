@@ -2,8 +2,16 @@ import React from 'react';
 import './SearchResults.css';
 
 export default class SearchResults extends React.Component {
+  
   render() {
-    return(
+    // this.props.setLoading()
+    if (this.props.results.length === 0) {
+      return (<section className="SearchResults">
+      <p>Unfortunately, it appears that there are no results for that search.</p>
+      <p>Please try a new search term!</p>
+    </section>)
+    }
+    return (
       <section className="SearchResults">
         <ul>
           {this.props.results.map(result => {
