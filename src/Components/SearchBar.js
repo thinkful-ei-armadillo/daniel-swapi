@@ -3,7 +3,8 @@ import './SearchBar.css';
 
 export default class SearchBar extends React.Component {
   state = {
-    term: ''
+    term: '',
+    type: ''
   }
 
   handleSearch = (searchTerm) => {
@@ -11,12 +12,19 @@ export default class SearchBar extends React.Component {
     this.setState({term: searchTerm});
   }
 
+  handleSelect = (category) => {
+    console.log(category);
+    this.setState({type: category})
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     console.log('search submitted!')
     // this.props.setLoading()
 
-    fetch(`https://swapi.co/api/people/?search=${this.state.term}`)
+    const url = `https://swapi.co/api/${this.state.type}/?search=${this.state.term}`;
+
+    fetch(url)
       .then(res => {
         if (!res.ok) {
           return res.json().then(error => {
@@ -39,13 +47,22 @@ export default class SearchBar extends React.Component {
 
     return (
       <form className="search-form" onSubmit={(e) => this.handleSubmit(e)}>
-        <input 
-          type="text" 
-          placeholder="Search for a character..."
+        <input
+          type="text"
+          placeholder="Search for something..."
           className="search-input"
-          onChange={(e) => this.handleSearch(e.target.value)} 
+          onChange={(e) => this.handleSearch(e.target.value)}
           required
           />
+        <select className="select-search-type" onChange={(e) => this.handleSelect(e.target.value)}>
+          <option value=''>Category</option>
+          <option value='people'>People</option>
+          <option value='films'>Films</option>
+          <option value='starships'>Starships</option>
+          <option value='vehicles'>Vehicles</option>
+          <option value='species'>Species</option>
+          <option value='planets'>Planets</option>
+        </select>
         <button type="submit" className="submit-button">Submit</button>
       </form>
     )
