@@ -54,7 +54,7 @@ export default class SearchBar extends React.Component {
           onChange={(e) => this.handleSearch(e.target.value)}
           required
           />
-        <select className="select-search-type" onChange={(e) => this.handleSelect(e.target.value)}>
+        <select className="select-search-type" onChange={(e) => this.handleSelect(e.target.value)} required>
           <option value=''>Category</option>
           <option value='people'>People</option>
           <option value='films'>Films</option>
